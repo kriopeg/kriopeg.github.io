@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="description" content="Разработчик мобильных приложений под андроид">
+		<meta name="keywords" content="android, applications, андроид, приложения, ПДД, билеты пдд, дорожные знаки, судоку, парсер, html, css, json, regexp, игры, таблицы шульте, скорочтение, цепная реакция">
+		<link rel="icon" href="https://kriopeg.ru/favicon.ico" type="image/x-icon">
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id=UA-119884431-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-119884431-1');
+		</script>
+		<title>KriopeG.ru - разработчик мобильных приложений</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+		<!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script-->
+		<style>
+		   @keyframes link-anim {
+				0% {
+					width: 500px;
+					padding-left: 30px;
+				} 
+				50% {
+					width: 480px;
+					padding-left: 20px;
+				}
+				100% {
+					width: 500px;
+					padding-left: 30px;
+				}
+			}
+			@keyframes arrow-anim {
+				0%, 50% {
+					right: 12px;
+				}
+				100% {
+					right: -24px;
+				}
+			}
+			@keyframes inititem {
+				0% {
+					box-shadow: 0 0 0 rgba(0,0,0,.1);
+				}
+				16% {
+					box-shadow: 0 0 0 15px rgba(0,0,0,.1);
+				}
+				33% {
+					box-shadow: 0 0 0 rgba(0,0,0,.1);
+				}
+				50% {
+					box-shadow: 0 0 0 15px rgba(0,0,0,.1);
+				}
+				66% {
+					box-shadow: 0 0 0 rgba(0,0,0,.1);
+				}
+				83% {
+					box-shadow: 0 0 0 15px rgba(0,0,0,.1);
+				}
+				100% {
+					box-shadow: 0 4px 10px rgba(0,0,0,.3);
+				}
+			}
+			@keyframes description-anim {
+				0%{
+					opacity: 0;
+					transform: rotate(10deg);
+				}
+				100% {
+					opacity: 1;
+					transform: rotate(0deg);
+				}
+			}
+			@keyframes description-anim-end {
+				0%{
+					opacity: 0;
+					transform: rotate(-10deg);
+				}
+				100% {
+					opacity: 1;
+					transform: rotate(0deg);
+				}
+			}
+			body{
+				background:#f7f7f7;
+				font-family: 'Roboto', sans-serif;
+				margin: 0;
+			}
+			h1 {
+				font-size: 1.5em;
+			}
+			a {
+				color: #333;
+			}
+			ul li {
+				margin: 0.5em;
+			}
+			#main{
+				padding: 20px 2% 100px;
+				margin: 0 auto;
+				max-width: 610px;
+			}
+			.app_item{
+				position: relative;
+				margin: 20px 0;
+			}
+			.app_item .img{
+				background: #fff;
+				width: 90px;
+				height: 90px;
+				border-radius: 45px;
+				position: relative;
+				z-index: 100;
+			}
+			.app_item .img:hover{
+				z-index: 101;
+			}
+			.app_item .img .img_wrapper{
+				box-shadow: 0 4px 10px rgba(0,0,0,.3);
+				display: block;
+				border-radius: 45px;
+				overflow: hidden;
+				position: relative;
+				z-index: 50;
+			}
+			.app_item:first-of-type .img .img_wrapper{
+				animation: inititem 2s ease-in-out;
+			}
+			.app_item .img img{
+				display: block;
+			}
+			.app_item.gearavity .img img{
+				margin: 10px;
+			}
+			.app_item .img .description{
+				display: none;
+				box-sizing: border-box;
+				box-shadow: 0 4px 20px rgba(0,0,0,.15);
+				border-radius: 45px 0 0 45px;
+				background: #fff;
+				width: 610px;
+				height: 200px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				overflow: hidden;
+				padding: 0 10px 0 100px;
+				transform-origin: 0% 0%;
+			}
+			.app_item .img .description h2{
+				margin: 0;
+				font-size: 18px;
+				line-height: 40px;
+			}
+			.app_item .img .description p{
+				font-size: 14px;
+				line-height: 19px;
+				margin: 0;
+			}
+			.app_item:last-of-type .img .description{
+				bottom: 0;
+				top: auto;
+				transform-origin: 0% 100%;
+			}
+			.app_item .img:hover .description{
+				display: block;
+				animation: description-anim 0.3s ease-in-out;
+			}
+			.app_item:last-of-type .img:hover .description{
+				animation-name: description-anim-end;
+			}
+			.app_item .content a{
+				display: block;
+				position: absolute;
+				background: #fff;
+				top: 50%;
+				left: 80px;
+				width: 500px;
+				height: 40px;
+				padding-left: 30px;
+				margin-top: -20px;
+				text-decoration: none;
+				line-height: 40px;
+				perspective: 0px;
+			}
+			.app_item .arrow{
+				position: absolute;
+				font-weight: bold;
+				width: 24px;
+				height: 24px;
+				right: 12px;
+				top: 50%;
+				margin-top: -12px;
+			}
+			.app_item .content a:hover{
+				animation: link-anim 0.4s ease-in-out;
+			}
+			.app_item .content a:hover .arrow{
+				animation: arrow-anim 0.6s ease-in-out;
+				right: -24px;
+			}
+
+			@media only screen and (max-width : 700px) {
+				body{
+					font-size: 12px;
+				}
+				h1{
+					text-align: center;
+				}
+				#main{
+					padding: 20px 5% 50px;
+					margin: 0;
+					max-width: none;
+				}
+				.app_item .img{
+					width: auto;
+					height: auto;
+					border-radius: 25px;
+				}
+				.app_item .img img{
+					width: 50px;
+					height: 50px;
+				}
+				.app_item.gearavity .img img{
+					width: 40px;
+					height: 40px;
+					margin: 5px;
+				}
+				.app_item .img .img_wrapper{
+					border-radius: 25px;
+					width: 50px;
+					height: 50px;
+					position: absolute;
+					box-shadow: 0 4px 5px rgba(0,0,0,.3);
+				}
+				.app_item:first-of-type .img .img_wrapper{
+					animation: none;
+				}
+				.app_item .img .description{
+					display: block;
+					border-radius: 25px 0 0 0;
+					width: auto;
+					height: auto;
+					position: relative;
+					padding: 0 10px 0 60px;
+				}
+				.app_item .img .description h2{
+					font-size: 1.2em;
+					line-height: 1.2;
+					padding: 10px 0;
+				}
+				.app_item .img .description p{
+					font-size: 1em;
+					line-height: 1.2;
+					padding-bottom: 10px;
+				}
+				.app_item:last-of-type .img .description{
+					bottom: auto;
+					top: auto;
+				}
+				.app_item .img:hover .description{
+					animation: none;
+				}
+				.app_item:last-of-type .img:hover .description{
+					animation-name: none;
+				}
+				.app_item .content a{
+					position: relative;
+					background: #ddd;
+					z-index: 102;
+					top: auto;
+					left: auto;
+					width: auto;
+					height: auto;
+					padding: 10px 34px 10px 10px;
+					margin-top: 0;
+					text-decoration: underline;
+					font-size: 1.1em;
+					line-height: 1.2;
+				}
+				.app_item .content a:hover,
+				.app_item .content a:hover .arrow{
+					animation: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<h1>Android apps development</h1>
+			<div class="app_item">
+				<div class="img">
+					<span class="img_wrapper"><img src="ic_krio_pdd.png" alt="Билеты ПДД андроид ABM CD" width="90" height="90"/></span>
+					<div class="description">
+						<h2>ПДД 2020: билеты для экзамена, дорожные знаки РФ</h2>
+						<p>Приложение помогает подготовиться к теоретическому экзамену в ГИБДД по категориям ABM, CD и соответствующим подкатегориям. Содержит актуальные билеты, вопросы в которых соответствуют официальным. Кроме того имеется удобный перечень всех дорожных знаков с подробным описанием каждого из них, а также таблица штрафов, ну и конечно же сами правила дорожного движения.</p>
+					</div>
+				</div>
+				<div class="content">
+					<a href="https://play.google.com/store/apps/details?id=ru.kriopeg.pdd.bileti&referrer=utm_source%3Dkriosite" target="_blank"><div class="arrow"><img src="ic_arrow_forward.png" alt=">" /></div>ПДД 2020: билеты для экзамена, дорожные знаки РФ</a>
+				</div>
+			</div>
+			<div class="app_item">
+				<div class="img">
+					<span class="img_wrapper"><img src="ic_schulte.png" alt="Schulte tables android" width="90" height="90"/></span>
+					<div class="description">
+						<h2>Таблица Шульте: скорочтение, зрительное восприятие</h2>
+						<p>Таблицы Шульте разработаны первоначально как психодиагностическая проба для исследования свойств внимания. Они представляют собой таблицы со случайно расположенными объектами (числами или буквами) и служат для проверки и развития быстроты нахождения этих объектов в определённом порядке. Они позволяют улучшить периферическое зрительное восприятие, что положительно сказывается на навыке скорочтения. В приложении представлены различные варианты таблиц, как самые простые, так и немного экзотические.</p>
+					</div>
+				</div>
+				<div class="content">
+					<a href="https://play.google.com/store/apps/details?id=ru.kriopeg.schultetable&referrer=utm_source%3Dkriosite" target="_blank"><div class="arrow"><img src="ic_arrow_forward.png" alt=">" /></div>Таблица Шульте: скорочтение, зрительное восприятие</a>
+				</div>
+			</div>
+			<div class="app_item">
+				<div class="img">
+					<span class="img_wrapper"><img src="ic_quantool.png" alt="Html/Json парсер андроид" width="90" height="90"/></span>
+					<div class="description">
+						<h2>Quantool: Html/Json парсер + виджет и уведомления</h2>
+						<p>Данное приложение позволяет с заданной периодичностью обращаться к страницам различных сайтов или к сервисам API, парсить оттуда необходимую информацию и получать уведомления при её изменении или просто выводить в виджет на вашем android-устройстве. Есть несколько режимов: парсинг Json, парсинг с помощью регулярных выражений, парсинг HTML с помощью CSS-селекторов и простой пинг сервера. Вы можете отслеживать подписчиков в социальных сетях, цены в интернет-мегазинах, погоду, курсы валют и т.д., на что вам хватит фантазии.</p>
+					</div>
+				</div>
+				<div class="content">
+					<a href="/quantool" target="_blank"><div class="arrow"><img src="ic_arrow_forward.png" alt=">" /></div>Quantool: Html/Json парсер + виджет и уведомления</a>
+				</div>
+			</div>
+			<div class="app_item">
+				<div class="img">
+					<span class="img_wrapper"><img src="ic_space_slug.png" alt="Space slug android" width="90" height="90"/></span>
+					<div class="description">
+						<h2>Space slug: спаси слизня, доберись до космолета</h2>
+						<p>Довольно хардкорная временами игра, но в то же время заставляет иногда задуматься, что-то вроде логического платформера. Прыгая между камнями, избегая столкновения с астероидами и падения вниз, помогите слизню добраться до космического корабля, чтобы спастись. По началу это кажется легко, но с каждым уровнем сложность возрастает, появляются новые игровые механики и пройти уровень на 3 звезды становится проблематично.</p>
+					</div>
+				</div>
+				<div class="content">
+					<a href="https://play.google.com/store/apps/details?id=ru.kriopeg.spaceslug&referrer=utm_source%3Dkriosite" target="_blank"><div class="arrow"><img src="ic_arrow_forward.png" alt=">" /></div>Space slug: спаси слизня, доберись до космолета</a>
+				</div>
+			</div>
+			<div class="app_item">
+				<div class="img">
+					<span class="img_wrapper"><img src="ic_sudoku.png" alt="Thematic sudoku android" width="90" height="90"/></span>
+					<div class="description">
+						<h2>Thematic sudoku: судоку с темами оформления</h2>
+						<p>Знакомая многим логическая игра. Существует огромное количество различного рода вариаций и реализаций этой головоломки, чем же может удивить данная версия? Это классический судоку с возможностью выбора различных тем оформления игрового поля, они отличаются не только цветом фона, здесь вы найдете как классические стили оформления, так тематические: на тему marbles, новогодний, мультяшный и другие. Попробуйте, возможно какой-то вариант оформления вам придется по вкусу.</p>
+					</div>
+				</div>
+				<div class="content">
+					<a href="https://play.google.com/store/apps/details?id=ru.kriopeg.thematicsudoku&referrer=utm_source%3Dkriosite" target="_blank"><div class="arrow"><img src="ic_arrow_forward.png" alt=">" /></div>Thematic sudoku: судоку с темами оформления</a>
+				</div>
+			</div>
+			<div class="app_item gearavity">
+				<div class="img">
+					<span class="img_wrapper"><img src="ic_gearavity.png" alt="gearavity android logic game" width="70" height="70"/></span>
+					<div class="description">
+						<h2>GearAvity</h2>
+						<p>GearAvity представляет собой смесь головоломки с этакой немного хардкорной казуалкой. Суть игры в том, чтобы с помощью простого механизма из шестеренок вращать уровень, наполенный различными ловушками, и попытаться докатить шарик, находящийся внутри, до финиша. По началу это кажется довольно простым заданием, но с каждым уровнем становится все сложнее и сложнее.</p>
+					</div>
+				</div>
+				<div class="content">
+					<a href="https://play.google.com/store/apps/details?id=ru.kriopeg.gearavity&referrer=utm_source%3Dkriosite" target="_blank"><div class="arrow"><img src="ic_arrow_forward.png" alt=">" /></div>GearAvity</a>
+				</div>
+			</div>
+			<div class="app_item">
+				<div class="img">
+					<span class="img_wrapper"><img src="ic_reagent.png" alt="Reagent таймкиллер для андроид" width="90" height="90"/></span>
+					<div class="description">
+						<h2>Reagent</h2>
+						<p>Игра, в которой вам предстоит попробовать запустить самую длинную цепную реакцию из расположенных на игровом поле своеобразных молекул. Чем длиннее реакция и чем больше молекул задействовано в каждой итерации, тем больше очков вы будете получать. Вы можете выстроить из молекул определенную структуру и запустить цепную реакцию подобно принципу домино, а можете положиться на случай и наугад запустить реакцию из той позиции, которая имеется на данный момент.</p>
+					</div>
+				</div>
+				<div class="content">
+					<a href="https://play.google.com/store/apps/details?id=ru.kriopeg.reagent&referrer=utm_source%3Dkriosite" target="_blank"><div class="arrow"><img src="ic_arrow_forward.png" alt=">" /></div>Reagent: game-challenge for longest chain reaction</a>
+				</div>
+			</div>
+			<div class="app_item">
+				<div class="img">
+					<span class="img_wrapper"><img src="ic_qar_big.png" alt="QAR аркада для андроид" width="90" height="90"/></span>
+					<div class="description">
+						<h2>QAR</h2>
+						<p>Собирайте чекпоинты своим квадом (от слова квадрат). После каждого достигнутого чекопинта, если у вас нет активных эффектов вы получаете один из положительных или отрицательных, а также на поле появляется дополнительный вражеский квад. Таким образом со временем набирать очки становится все сложнее и сложнее. Но чем больше очков вы набираете, тем больше шансов на положительный эффект.</p>
+					</div>
+				</div>
+				<div class="content">
+					<a href="https://play.google.com/store/apps/details?id=ru.kriopeg.qar&referrer=utm_source%3Dkriosite" target="_blank"><div class="arrow"><img src="ic_arrow_forward.png" alt=">" /></div>QAR: Quads war</a>
+				</div>
+			</div>
+		</div>
+	
+</body></html>
