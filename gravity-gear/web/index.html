@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Gravity Gear Web</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="Gravity Gear - minimalistic physics-based platformer game. Dodge traps and roll the ball in the big gear to the finish point.">
+	<meta name="keywords" content="android, applications, андроид, игра, gravity, gear, ball, physics game, logical, platformer">
+	<link rel="icon" href="https://kriopeg.ru/favicon.ico" type="image/x-icon">
+	<link rel="canonical" href="https://kriopeg.ru/gravity-gear/web/">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
@@ -17,10 +20,14 @@
         </div>
       </div>
       <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Gravity Gear Web</div>
       </div>
+	  <div style="box-sizing: border-box; background: #f7f7f7; margin: 50px auto 0; border-radius: 2px; border: 1px solid #ddd; padding: 1px 20px 20px;">
+		<h1>Gravity Gear</h1>
+		<div>Gravity Gear &mdash; minimalistic physics-based platformer game. Dodge traps and roll the ball in the big gear to the finish point.</div>
+		<h2>Controls</h2>
+		<div>Press the left and right arrows, to rotate the big gear</div>
+	</div>
     </div>
     <script>
       var buildUrl = "Build";
@@ -30,9 +37,9 @@
         frameworkUrl: buildUrl + "/web.framework.js",
         codeUrl: buildUrl + "/web.wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
+        companyName: "Kriopeg",
         productName: "Gravity Gear Web",
-        productVersion: "1.0",
+        productVersion: "1.0.0",
       };
 
       var container = document.querySelector("#unity-container");
@@ -46,7 +53,7 @@
         config.devicePixelRatio = 1;
       } else {
         canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.height = "540px";
       }
       loadingBar.style.display = "block";
 
